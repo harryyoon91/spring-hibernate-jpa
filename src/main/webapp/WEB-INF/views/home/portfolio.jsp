@@ -93,7 +93,7 @@ $(function() {
 					</tr>		
 					<tr>
 						<td>Github</td>
-						<td><a href="https://github.com/harryyoon91" target="_blank">https://github.com/harryyoon91</a></td>
+						<td><a href="https://github.com/harryyoon91/spring-hibernate-jpa" target="_blank">https://github.com/harryyoon91/spring-hibernate-jpa</a></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><a href="../hr/index" type="button" class="btn btn-primary btn-lg">Go to application <span class="glyphicon glyphicon-share"></span></a></td>
@@ -159,7 +159,7 @@ $(function() {
 					</tr>		
 					<tr>
 						<td>Github</td>
-						<td><a href="https://github.com/harryyoon91" target="_blank">https://github.com/harryyoon91</a></td>
+						<td><a href="https://github.com/harryyoon91/spring-mybatis" target="_blank">https://github.com/harryyoon91/spring-mybatis</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -222,7 +222,7 @@ $(function() {
 					</tr>		
 					<tr>
 						<td>Github</td>
-						<td><a href="https://github.com/harryyoon91" target="_blank">https://github.com/harryyoon91</a></td>
+						<td><a href="https://github.com/harryyoon91/spring-websocket" target="_blank">https://github.com/harryyoon91/spring-websocket</a></td>
 					</tr>
 				</tbody>
 			</table>
