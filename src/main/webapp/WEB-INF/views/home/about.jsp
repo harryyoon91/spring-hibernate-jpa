@@ -7,7 +7,7 @@
 <title>Yonghak Yoon</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="shortcut icon" href="\resources\favicon.ico" type="image/x-icon">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -15,31 +15,32 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-
+	$("#about").attr("class", "active");
 });
 </script>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 	<div class="container">
 		<div class="row">
-			<div class="page-header">
-				<h1>Hello, Employer!</h1>
-			</div>
-		</div>
-		
-		<div class="row" id="content-div">
-			<div class="btn-group" id="nav-for-home">
-				<a href="about" type="button" class="btn btn-primary">About</a>
-				<a href="portfolio" type="button" class="btn btn-default">Portfolio</a>
-				<a href="hireyonghak" type="button" class="btn btn-default">Hire Yonghak</a>
-			</div>
-		</div>
-		
-		<br>
-		<div class="row">
 			<div class="well">
-				<img src="../../../resources/img/user1.png" class="img-circle" width="150" height="200">
-				<hr>
+				 <div class="row">
+				  <div class="col-md-4">
+				    <div class="thumbnail" style="width:300px;">
+				        <img src="\resources\img\picture.jpg" alt="Lights" style="width:75%" class="img-circle">
+				        <div class="caption">
+							<div class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" style="margin-left:90px" type="button" data-toggle="dropdown">Resume
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+							    <li><a href="/home/portfolio/pdfresumetdownload"><label class="glyphicon glyphicon-file">[PDF]YonghakYoon-Resume.pdf</label></a></li>
+							    <li><a href="/home/portfolio/wordresumetdownload"><label class="glyphicon glyphicon-file">[WORD]YonghakYoon-Resume.docx</label></a></li>
+							  </ul>
+							</div>
+				        </div>
+				    </div>
+				  </div>
+			</div>
 				<table class="table table-striped">
 					<thead></thead>
 					<tbody>
@@ -48,8 +49,12 @@ $(function() {
 							<td>Yonghak Yoon</td>
 						</tr>
 						<tr>
+							<td>Github</td>
+							<td><a href="https://github.com/harryyoon91" target="_blank">https://github.com/harryyoon91</a></td>
+						</tr>
+						<tr>
 							<td>Contact</td>
-							<td>harryyoon91@gmail.com</td>
+							<td><a href="/home/hireyonghak">harryyoon91@gmail.com</a></td>
 						</tr>
 						<tr>
 							<td>Work Authorization</td>
@@ -76,29 +81,15 @@ $(function() {
 							<td>Skill Set</td>
 							<td>
 								<ul>
-									<li>Java</li>
-									<li>Spring</li>
+									<li>Java, Servlet, JSP, Spring Framework</li>
 									<li>SQL[Oracle SQL, MySQL]</li>
 									<li>ORM[iBatis, myBatis, JPA/Hibernate]</li>
-									<li>JSP</li>
-									<li>Javascript</li>
-									<li>jQuery</li>
-									<li>HTML</li>
-									<li>CSS</li>
-									<li>Apache & Other Java, Javascript Libraries</li>
-									<li>AJAX</li>
+									<li>Javascript, jQuery, HTML, CSS</li>
+									<li>RESTful, Ajax, Json</li>
+									<li>SVN, Github</li>
+									<li>AWS Cloud EC2 & Route 53</li>
+									<li>Libraries(Apache Commons, Poi, Chart.js, jqTree, FullCalendar and etc)</li>
 								</ul>
-							</td>
-						</tr>
-						<tr>
-							<td>Github</td>
-							<td><a href="https://github.com/harryyoon91" target="_blank">https://github.com/harryyoon91</a></td>
-						</tr>
-						<tr>
-							<td>Resume</td>
-							<td>
-								<a href="/home/portfolio/pdfresumetdownload"><label class="glyphicon glyphicon-file" style="padding-right:10px">[PDF]YonghakYoon-Resume.pdf</label></a>
-								<a href="/home/portfolio/wordresumetdownload"><label class="glyphicon glyphicon-file">[WORD]YonghakYoon-Resume.doc</label></a>
 							</td>
 						</tr>
 					</tbody>
@@ -108,14 +99,6 @@ $(function() {
 	</div>
 	<br>
 </body>
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="text-center">
-				<hr>
-				<p>Copyright © Yonghak Yoon</p>
-			</div>	
-		</div>
-	</div>
-</footer>
+
+<%@ include file="footer.jsp" %>
 </html>

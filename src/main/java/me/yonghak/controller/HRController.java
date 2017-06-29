@@ -116,9 +116,9 @@ public class HRController {
 		user.setConfirmlink(confirmlink);
 		hrService.addUser(user);
 		MailSend mailsend = new MailSend();
-		mailsend.sendmail("[Yonghak Yoon Portfolio Email Verification] Please, verify your email to complete register!", user.getEmail(), "http://localhost:8080/hr/verification/"+confirmlink+"/");
+		mailsend.sendmail("[Yonghak Yoon Portfolio Email Verification] Please, verify your email to complete register!", user.getEmail(), "http://yonghak.me/hr/verification/"+confirmlink);
 		m.addAttribute("process", "registered");
-		return "hr/login";
+		return "redirect:/hr/success";
 	}
 	
 	@RequestMapping(value = "/hr/login", method = RequestMethod.GET)
@@ -149,7 +149,7 @@ public class HRController {
 		return "redirect:/hr/hr";
 	}
 	
-	@RequestMapping(value = "/hr/verification/{code}/", method = RequestMethod.GET)
+	@RequestMapping(value = "/hr/verification/{code}", method = RequestMethod.GET)
 	public String verificationGet(Model m, @PathVariable("code") String code,  @ModelAttribute("user") UserVO user) {
 		logger.info("verfication code : " + code);
 		int verifier = hrService.verificationCheck(code);
@@ -158,7 +158,7 @@ public class HRController {
 		} else {
 			m.addAttribute("process", "verified-fail");	
 		}
-		return "hr/login";
+		return "redirect:/hr/success";
 	}
 	
 	@RequestMapping(value = "/hr/logout", method = RequestMethod.GET)
@@ -175,7 +175,7 @@ public class HRController {
 	@RequestMapping(value = "/hr/add/downloadform", method = RequestMethod.GET)
 	public ModelAndView addFormDownload(Model m, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String directory = "C:\\Users\\Yonghak\\Documents\\project\\workspace\\spring-hibernate-jpa\\src\\main\\webapp\\resources\\file";
+		String directory = "type file directory here";
 		String filename = "add_employee_form.xlsx";
 		mav.addObject("directory", directory);
 		mav.addObject("filename", filename);
@@ -197,8 +197,6 @@ public class HRController {
 		user = (UserVO)session.getAttribute("LOGINED_USER");
 		MultipartFile upfile = employeeform.getFile();
 		EmployeeVO emp = new EmployeeVO();
-		DepartmentVO dept = new DepartmentVO();
-		LocationVO loc = new LocationVO();
 		Map<Integer, String> map = new HashMap<Integer,String>();
 		
 		if (!upfile.isEmpty()) {
@@ -217,21 +215,15 @@ public class HRController {
 				emp.setSalary((Integer.parseInt(map.get(4))));
 				emp.setManager_id((Integer.parseInt(map.get(5))));
 				emp.setDepartment_id((Integer.parseInt(map.get(6))));
-				dept.setDepartment_id((Integer.parseInt(map.get(6))));
-				dept.setDepartment_name((String)map.get(7));
-				dept.setLocation_id((Integer.parseInt(map.get(8))));
-				loc.setLocation_id((Integer.parseInt(map.get(8))));
-				loc.setCity((String)map.get(9));
-				loc.setCountry_id((String)map.get(10));
-				dept.setLocation(loc);
-				emp.setDepartment(dept);				
+				emp.setUser_no(user.getUser_no());
 				logger.info("EMPLOYEE INFO : : " + emp);
 				hrService.addEmployee(emp);
 			} catch (IOException e) {
 				throw new RuntimeException("Invalid Format.");
 			}
 		}
-		return "redirect:/hr/hr";
+		m.addAttribute("process", "added");
+		return "redirect:/hr/success";
 	}
 	
 	@RequestMapping(value="/hr/changepwd", method = RequestMethod.GET)
@@ -260,6 +252,12 @@ public class HRController {
 		return "hr/forgotpwd";
 	}
 	
+	@RequestMapping(value="/hr/success", method = RequestMethod.GET)
+	public String success(Model m, HttpServletRequest req, HttpSession session) {
+		
+		return "hr/success";
+	}
+	
 	@RequestMapping(value="/hr/delete", method = RequestMethod.GET)
 	public String deleteEmployee(Model m, HttpServletRequest req, HttpSession session, UserVO user) {
 		user = (UserVO) session.getAttribute("LOGINED_USER");
@@ -268,11 +266,11 @@ public class HRController {
 		EmployeeVO emp = hrService.getEmpByEmpId(empid);
 		if (user.getUser_no() != emp.getUser_no()) {
 			m.addAttribute("process", "delete-noauth");
-			return "hr/hr";
+			return "hr";
 		}
 		hrService.deleteEmployeeByEmployeeVO(emp);
 		
-		return "redirect:hr/hr";
+		return "redirect:/hr/success";
 	}
 	
 }

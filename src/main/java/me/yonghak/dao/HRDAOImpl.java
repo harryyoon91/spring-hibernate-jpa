@@ -106,8 +106,10 @@ public class HRDAOImpl implements HRDAO {
 
 	@Override
 	public EmployeeVO getEmployeeByUserno(int userno) {
-		Session session = this.sessionFactory.getCurrentSession();		
-		EmployeeVO e = (EmployeeVO) session.load(EmployeeVO.class, userno);
+		Session session = this.sessionFactory.getCurrentSession();	
+		Criteria criteria = session.createCriteria(EmployeeVO.class);
+		criteria.add(Restrictions.eq("user_no", userno));
+		EmployeeVO e = (EmployeeVO) criteria.uniqueResult();
 		logger.info("Employee loaded successfully, Employee details = "+e);
 		return e;
 	}

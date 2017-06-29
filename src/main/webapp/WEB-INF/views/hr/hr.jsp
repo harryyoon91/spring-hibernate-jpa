@@ -9,7 +9,7 @@
 <title>HR Program by Yonghak Yoon</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="shortcut icon" href="\resources\favicon.ico" type="image/x-icon">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -87,29 +87,7 @@ $(function() {
 </script>
 </head>
 <body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index">HR Program</a>
-    </div>
-
-    <ul class="nav navbar-nav navbar-right">
-      	<c:choose>
-			<c:when test = "${empty sessionScope.LOGINED_USER}">
-			      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</c:when>
-			<c:otherwise>
-			      <li><a href="changepwd"><span class="glyphicon glyphicon-wrench"></span> Change Password</a></li>
-			      <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-			</c:otherwise>
-      	</c:choose>
-      <li><a href="../home/portfolio"><span class="glyphicon glyphicon-list"></span> Portfolio</a></li>
-      <li><a href="../home/hireyonghak"><span class="glyphicon glyphicon-envelope"></span> Hire Yonghak</a></li>
-    </ul>
-  </div>
-</nav>
+<%@ include file="nav.jsp" %>
   
 <div class="container">
   <h3>Basic CRUD</h3>
@@ -217,7 +195,7 @@ $(function() {
   					<c:choose>
   						<c:when test="${not empty sessionScope.LOGINED_USER.user_no }" >
   							<c:if test="${item.user_no eq sessionScope.LOGINED_USER.user_no }">
-								<a href="delete?empid=${item.employee_id }"><label class="glyphicon glyphicon-trash"></label></a>
+								<a href="/hr/delete?empid=${item.employee_id }"><label class="glyphicon glyphicon-trash"></label></a>
   							</c:if>
   						</c:when>
   						<c:otherwise>
@@ -229,13 +207,13 @@ $(function() {
   	</tbody>
 	</table>
 	<div class="pull-right">
-		<a href="add" class="btn btn-success" >Add Employee</a>
+		<a href="/hr/add" class="btn btn-success" >Add Employee</a>
 	</div>
 	<div class="row text-center">
- 		<c:set var="link" value="index"/>
+ 		<c:set var="link" value="/hr/hr"/>
 		<%@ include file="paging.jsp" %>
 	</div>
-	<form id="search-form" method="post" action="index" >
+	<form id="search-form" method="post" action="hr" >
 		<input type="hidden" id="display" name="display" value="${searchform.display }"/>
 		<input type="hidden" id="pageNo" name="pageNo" value="${pagination.currentPage }"/>
 		<input type="hidden" id="opt" name="opt" value="${empty searchform.opt ? '' : searchform.opt}"/>
@@ -246,15 +224,7 @@ $(function() {
 		<input type="hidden" id="keyword" name="keyword" value="${empty searchform.keyword ? '' : searchform.keyword}"/>
 	</form>
 </div>
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="text-center">
-				<hr>
-				<p>Copyright © Yonghak Yoon</p>
-			</div>	
-		</div>
-	</div>
-</footer>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>

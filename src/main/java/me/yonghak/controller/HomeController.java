@@ -57,13 +57,13 @@ public class HomeController {
 		MailSend mailsend = new MailSend();
 		mailsend.sendmail("[HIRING FROM YONGHAK YOON PORTFOLIO] "+hire.getCompany()+" |||| "+hire.getJobtype(), 
 							"harryyoon91@gmail.com", 
-							"Company :: " + hire.getCompany() + " |||| " +
-							"Location :: " + hire.getLocation() + " |||| " +
-							"Job-Type :: " + hire.getJobtype() + " |||| " +
-							"Salary :: $" + hire.getLocation() + " |||| " +
-							"Description :: " + hire.getDescription() + " |||| " +
-							"Website :: " + hire.getWebsite() + " |||| " +
-							"Email :: " + hire.getEmail() + " |||| ");
+							"Company :: " + hire.getCompany() + " ||||\n " +
+							"Location :: " + hire.getLocation() + " ||||\n " +
+							"Job-Type :: " + hire.getJobtype() + " ||||\n " +
+							"Salary :: $" + hire.getLocation() + " ||||\n " +
+							"Description :: " + hire.getDescription() + " ||||\n " +
+							"Website :: " + hire.getWebsite() + " ||||\n " +
+							"Email :: " + hire.getEmail() + " ||||\n ");
 		return "home/mailsent";
 	}
 	
@@ -82,8 +82,8 @@ public class HomeController {
 	@RequestMapping(value = "/home/portfolio/pdfresumetdownload", method = RequestMethod.GET)
 	public ModelAndView pdfResumeDownload(Model m, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String directory = "C:\\Users\\Yonghak\\Documents\\project\\workspace\\spring-hibernate-jpa\\src\\main\\webapp\\resources\\file";
-		String filename = "YonghakYoon-Resume.pdf";
+		String directory = "type file directory here";
+		String filename = "[PDF]YonghakYoon-Resume.pdf";
 		mav.addObject("directory", directory);
 		mav.addObject("filename", filename);
 		mav.setView(downloadView);
@@ -94,8 +94,8 @@ public class HomeController {
 	@RequestMapping(value = "/home/portfolio/wordresumetdownload", method = RequestMethod.GET)
 	public ModelAndView wordResumeDownload(Model m, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String directory = "C:\\Users\\Yonghak\\Documents\\project\\workspace\\spring-hibernate-jpa\\src\\main\\webapp\\resources\\file";
-		String filename = "YonghakYoon-Resume.docx";
+		String directory = "type file directory here";
+		String filename = "[WORD]YonghakYoon-Resume.docx";
 		mav.addObject("directory", directory);
 		mav.addObject("filename", filename);
 		mav.setView(downloadView);

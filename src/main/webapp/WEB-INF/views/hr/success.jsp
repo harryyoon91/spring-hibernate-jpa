@@ -16,19 +16,33 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
+$(function() {
+    var url = location.href;
+    var parameter = (url.slice(url.indexOf('?') + 1, url.length)).split('=');
+    if (parameter[1]=='registered') {
+    	$("#registered").css("display", "block");
+    } else if (parameter[1]=='verified') {
+    	$("#verified").css("display", "block");
+    } else if (parameter[1]=="added") {
+    	$("#added").css("display", "block");
+    	$("#mainpage-btn").css("display", "inline");
+    }
+})
 </script>
 </head>
 <body>
 <%@ include file="nav.jsp" %>
   
 <div class="container">
- <div class="panel panel-danger">
+ <div class="panel panel-success">
 		<div class="panel-heading">
-			<h3>Error Page</h3>
+			<h3>Success !</h3>
 		</div>
 		<div class="panel-body">
-			This error was caused : : <c:out value="${message }"></c:out>.
+			<h4 style="color:green;display:none;" id="registered">Welcome to Yonghak Yoon's Portfolio. Please, check your email for verification.</h4>
+			<h4 style="color:green;display:none;" id="verified">You can login now! You just completed verification.</h4>
+			<h4 style="color:green;display:none;" id="added">The form has been successfully submitted.</h4>
+			<a style="display:none;" id="mainpage-btn" href="/hr/hr" class="btn btn-success pull-right">Go to main page</a>
 		</div>
 	</div>
 </div>

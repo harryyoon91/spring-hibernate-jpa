@@ -7,7 +7,7 @@
 <title>Yonghak Yoon</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="shortcut icon" href="\resources\favicon.ico" type="image/x-icon">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -15,27 +15,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-
+	$("#hireyonghak").attr("class", "active");
 });
 </script>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 	<div class="container">
-		<div class="row">
-			<div class="page-header">
-				<h1>Hello, Employer!</h1>
-			</div>
-		</div>
-		
-		<div class="row" id="content-div">
-			<div class="btn-group" id="nav-for-home">
-				<a href="about" type="button" class="btn btn-default">About</a>
-				<a href="portfolio" type="button" class="btn btn-default">Portfolio</a>
-				<a href="hireyonghak" type="button" class="btn btn-default">Hire Yonghak</a>
-			</div>
-		</div>
-		<br>
-		<br>
 		<div class="row">
 			<div class="panel panel-success">
 				<div class="panel-heading"><h2>Thank you for your offer !</h2></div>
@@ -44,14 +30,6 @@ $(function() {
 		</div>
 	</div>
 </body>
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="text-center">
-				<hr>
-				<p>Copyright © Yonghak Yoon</p>
-			</div>	
-		</div>
-	</div>
-</footer>
+
+<%@ include file="footer.jsp" %>
 </html>

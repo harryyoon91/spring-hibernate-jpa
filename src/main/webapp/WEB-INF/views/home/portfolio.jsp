@@ -10,32 +10,18 @@
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<link rel="shortcut icon" href="\resources\favicon.ico" type="image/x-icon">
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(function() {
-
+	$("#portfolio").attr("class", "active");
 });
 </script>
 </head>
 <body>
+<%@ include file="nav.jsp" %>
 	<div class="container">
-		<div class="row">
-			<div class="page-header">
-				<h1>Hello, Employer!</h1>
-			</div>
-		</div>
-		
-		<div class="row" id="content-div">
-			<div class="btn-group" id="nav-for-home">
-				<a href="about" type="button" class="btn btn-default">About</a>
-				<a href="portfolio" type="button" class="btn btn-primary">Portfolio</a>
-				<a href="hireyonghak" type="button" class="btn btn-default">Hire Yonghak</a>
-			</div>
-		</div>
-		
-		<br>
 		<div class="row">
 			<table class="table table-striped">
 				<col width="30%">
@@ -62,6 +48,10 @@ $(function() {
 					<tr>
 						<td>DB</td>
 						<td>MySQL</td>
+					</tr>	
+					<tr>
+						<td>Cloud</td>
+						<td>AWS</td>
 					</tr>	
 					<tr>
 						<td>WAS</td>
@@ -96,7 +86,7 @@ $(function() {
 						<td><a href="https://github.com/harryyoon91/spring-hibernate-jpa" target="_blank">https://github.com/harryyoon91/spring-hibernate-jpa</a></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="text-right"><a href="../hr/index" type="button" class="btn btn-primary btn-lg">Go to application <span class="glyphicon glyphicon-share"></span></a></td>
+						<td colspan="2" class="text-right"><a href="../hr/hr" type="button" class="btn btn-primary btn-lg">Go to application <span class="glyphicon glyphicon-share"></span></a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -230,14 +220,6 @@ $(function() {
 	</div>
 	<br>
 </body>
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="text-center">
-				<hr>
-				<p>Copyright © Yonghak Yoon</p>
-			</div>	
-		</div>
-	</div>
-</footer>
+
+<%@ include file="footer.jsp" %>
 </html>

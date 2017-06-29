@@ -22,6 +22,10 @@ public class HRServiceImpl implements HRService {
 	@Override
 	@Transactional
 	public void addEmployee(EmployeeVO emp) {
+		EmployeeVO employee = hrDAO.getEmployeeByUserno(emp.getUser_no());
+		if (null != employee) {
+			throw new RuntimeException("Adding Employee. You only can add 1 employee to this application.");
+		}
 		hrDAO.addEmployee(emp);
 	}
 
@@ -96,13 +100,16 @@ public class HRServiceImpl implements HRService {
 			hrDAO.verifiedYes(user);
 			return verifier;
 		}
-		return 0;
+		throw new RuntimeException("Invalid Verification");
 	}
 
 	@Override
 	@Transactional
 	public UserVO login(UserVO user) {
 		UserVO loginedUser = hrDAO.login(user);
+		if (null == loginedUser) {
+			throw new RuntimeException("ID or Password is incorrect");
+		}
 		return loginedUser;
 	}
 

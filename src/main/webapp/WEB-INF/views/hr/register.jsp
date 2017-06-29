@@ -10,7 +10,7 @@
 <title>HR Program by Yonghak Yoon</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="shortcut icon" href="\resources\favicon.ico" type="image/x-icon">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -119,6 +119,8 @@ $(function() {
 	// submit-btn
 	$("#submit-btn").click(function(e) {
 		e.preventDefault();
+		$("#submit-btn").attr("disabled", "disabled");
+		$("body").css("cursor", "progress");
 		$('#duplicate-check').css("display", "none");
 		var idcheck = $("#id-duplication-false").css("display");
 		var emailcheck = $("#email-duplication-false").css("display");
@@ -133,21 +135,7 @@ $(function() {
 </script>
 </head>
 <body>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index">HR Program</a>
-    </div>
-
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a href="../home/portfolio"><span class="glyphicon glyphicon-list"></span> Portfolio</a></li>
-      <li><a href="../home/hireyonghak"><span class="glyphicon glyphicon-envelope"></span> Hire Yonghak</a></li>
-    </ul>
-  </div>
-</nav>
+<%@ include file="nav.jsp" %>
   
 <div class="container">
 	<div class="panel panel-default">
@@ -197,15 +185,7 @@ $(function() {
 		</div>
 	</div>
 </div>
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="text-center">
-				<hr>
-				<p>Copyright © Yonghak Yoon</p>
-			</div>	
-		</div>
-	</div>
-</footer>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>
